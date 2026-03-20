@@ -1,0 +1,9 @@
+# Cache files
+__pycache__/
+.pytest_cache/
+
+# Credentials (CRITICAL for Task 1 security)
+*.pem
+
+# Environments
+venv/
