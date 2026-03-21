@@ -1,14 +1,11 @@
 services:
   flask-app:
-    build: .
     image: ryanfletcher96/assignment1-flask-app:latest
-    restart: always
-
   nginx:
     image: nginx:latest
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - flask-app
