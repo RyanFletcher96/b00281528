@@ -1,7 +1,7 @@
 services:
   flask-app:
     build: .
-    image: ryanfletcher96/assignment1-flask-app:latest
+    image: ryanfletcher96/assignment1-b00281528:latest
     restart: always
 
   nginx:

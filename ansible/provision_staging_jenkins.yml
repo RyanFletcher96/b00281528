@@ -39,6 +39,7 @@
 
 - name: Stage 2 - Install DuckDNS and Docker on the Staging EC2 Instance
   hosts: ec2_staging
+
   vars:
     remote_ec2_user: ubuntu
     # your DuckDNS subdomain (without the .duckdns.org part)
@@ -118,31 +119,11 @@
         groups: docker
         append: yes
 
-    - name: Install Java (Jenkins Prerequisite)
-      apt:
-        name: openjdk-17-jre
-        state: present
-
-    - name: Download Jenkins Key
-      get_url:
-        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-        dest: /usr/share/keyrings/jenkins.asc
-
-    - name: Add Jenkins Repo
-      apt_repository:
-        repo: "deb [signed-by=/usr/share/keyrings/jenkins.asc] https://pkg.jenkins.io/debian-stable binary/"
-        state: present
-
-    - name: Install Jenkins
-      apt:
-        name: jenkins
-        state: present
-
 - name: Stage 3 - Verify DuckDNS resolution from Localhost
   hosts: localhost
   connection: local
   vars:
-    duckdns_domain: b00281528-sd
+    duckdns_domain: assignment1-b00281528
 
   tasks:
     - name: Get the EC2 IP from the previous stage

@@ -40,6 +40,8 @@
     - name: Tear down existing docker-compose app
       community.docker.docker_compose_v2:
         project_src: /home/ubuntu
+        files:
+          - docker-compose-staging.yml
         state: absent
       ignore_errors: yes
 

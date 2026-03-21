@@ -5,7 +5,7 @@
 
   - name: Delete EC2 Key if it exists
     ec2_key:
-      name: "flask_weight_app_staging_key"
+      name: "pem_keys/flask_weight_app_staging_key"
       region: us-east-1
       state: absent
 
@@ -18,7 +18,7 @@
   - name: Save EC2 SSH key to file
     copy:
       content: "{{ ec2_key.key.private_key }}"
-      dest: flask_running_app_staging_key.pem
+      dest: pem_keys/flask_weight_app_staging_key.pem
       mode: 0600
 
 
