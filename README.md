@@ -1,6 +1,6 @@
 # Flask Weight App
 
-A simple Flask application to convert weights between kilograms, grams, and pounds.
+A simple Flask application to convert weights between kilograms, grams, & pounds.
 
 ## Installation
 
