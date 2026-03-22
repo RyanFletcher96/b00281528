@@ -4,13 +4,13 @@
   tasks:
 
   - name: Delete EC2 Key if it exists
-    ec2_key:
-      name: "pem_keys/flask_weight_app_staging_key"
+    amazon.aws.ec2_key:
+      name: "flask_weight_app_staging_key"
       region: us-east-1
       state: absent
 
   - name: Create EC2 SSH key
-    ec2_key:
+    amazon.aws.ec2_key:
       name: "flask_weight_app_staging_key"
       region: us-east-1
     register: ec2_key
@@ -26,6 +26,7 @@
       content: "{{ ec2_key.key.private_key }}"
       dest: pem_keys/flask_weight_app_staging_key.pem
       mode: 0600
+    when: ec2_key.changed
 
 
   - name: Create Security Group for app instance
