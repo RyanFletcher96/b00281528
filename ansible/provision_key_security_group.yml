@@ -15,6 +15,12 @@
       region: us-east-1
     register: ec2_key
 
+- name: Ensure pem_keys directory exists
+    file:
+      path: pem_keys
+      state: directory
+      mode: 0755
+
   - name: Save EC2 SSH key to file
     copy:
       content: "{{ ec2_key.key.private_key }}"
