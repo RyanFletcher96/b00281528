@@ -2,24 +2,6 @@
   hosts: localhost
   connection: local
   tasks:
-  - name: Delete EC2 Key if it exists
-    ec2_key:
-      name: "flask_weight_app_staging_key"
-      region: us-east-1
-      state: absent
-
-  - name: Create EC2 SSH key
-    ec2_key:
-      name: "flask_weight_app_staging_key"
-      region: us-east-1
-    register: ec2_key
-
-  - name: Save EC2 SSH key to file
-    copy:
-      content: "{{ ec2_key.key.private_key }}"
-      dest: flask_weight_app_staging_key.pem
-      mode: 0600
-
   - name: Create Security Group for app instance
     ec2_group:
       name: "flask_weight_app_staging_sg"
