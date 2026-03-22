@@ -15,7 +15,7 @@
       region: us-east-1
     register: ec2_key
 
-- name: Ensure pem_keys directory exists
+  - name: Ensure pem_keys directory exists
     file:
       path: pem_keys
       state: directory
