@@ -21,6 +21,11 @@
         region: "{{ region }}"
         state: started
         wait: yes
+        volumes:
+          - device_name: /dev/sda1
+            ebs:
+              volume_size: 20
+              delete_on_termination: true
       register: flask_weight_app_staging_instance
 
     - name: Add new instance to host group via its public IP address
